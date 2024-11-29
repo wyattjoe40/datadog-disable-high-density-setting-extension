@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "DataDog Disable High-Density Setting",
     "description": "An extension that automatically disables the High-Density setting on DataDog Dashboards.",
-    "version": "0.1",
+    "version": "0.2",
     "content_scripts": [
       {
         "js": ["scripts/content.js"],
