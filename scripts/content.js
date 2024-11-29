@@ -34,14 +34,16 @@ const configureButtonObserver = new MutationObserver((mutationsList, observer) =
         observer.disconnect();
 
         if (highDensityInput.value !== 'on') {
-            log('High density input is not off');
+            log('High density input is not on');
+            closeConfigPanel();
             return;
         }
 
         const highDensityCheckbox = document.evaluate("//span[text()='Increase density on wide screens']/following-sibling::button", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 
         if (!highDensityCheckbox) {
-            log('no high density checkbox')
+            log('No high density checkbox')
+            closeConfigPanel();
             return;
         }
 
@@ -97,8 +99,13 @@ function closeConfigPanel() {
     configurationPanelExitButton.click();
 }
 
+const LOGGING_ENABLED = false;
 
 function log(...p1) {
+    if (!LOGGING_ENABLED) {
+        return;
+    }
+    
     p1.unshift("[DISABLE-HIGH-DENSITY--EXTENSION]")
     console.log(p1);
 }
