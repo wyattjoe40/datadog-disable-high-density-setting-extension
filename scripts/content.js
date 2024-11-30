@@ -1,3 +1,5 @@
+const LOGGING_ENABLED = false;
+
 log("Starting DataDog Disable High-Density Setting Extension")
 
 const configureButtonObserver = new MutationObserver((mutationsList, observer) => {
@@ -99,13 +101,11 @@ function closeConfigPanel() {
     configurationPanelExitButton.click();
 }
 
-const LOGGING_ENABLED = false;
-
 function log(...p1) {
     if (!LOGGING_ENABLED) {
         return;
     }
-    
+
     p1.unshift("[DISABLE-HIGH-DENSITY--EXTENSION]")
     console.log(p1);
 }
